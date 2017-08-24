@@ -6,58 +6,30 @@ import React, { Component } from 'react';
 import {
     AppRegistry,
     View,
-    Dimensions,
-    BackAndroid
+    Text
 } from 'react-native';
 
-import {COLOR_TEST_BUTTON} from "./base/color"
+import SplashScreen from "react-native-splash-screen"
+import {PButton} from "./component/PButton"
 
-import {Provider} from 'react-redux'
-import {App} from './App'
+import {flexCenter} from './base/style'
 
 export class Entry extends Component {
-    constructor(){
-        super()
-        this.state = {
-            store : null
-        }
-        this.nextTimeExit = false
-    }
-
-    componentDidMount(){
-
-        BackAndroid.addEventListener('hardwareBackPress', (() => {
-            const navigator = this.refs.navigator
-            if(!navigator) {
-                return false
-            }
-            const routes = navigator.getCurrentRoutes()
-            if(routes.length === 1) {
-                if(this.nextTimeExit) {
-                    return false
-                } else {
-                    this.nextTimeExit = true
-                    alert("再按一次回退键退出珠峰课堂")
-                    setTimeout( (() => {
-                        this.nextTimeExit = false
-                    }).bind(this), 5000)
-                    return false
-                }
-                return
-            } else if(routes.length > 1) {
-                navigator.pop()
-                return true
-            }
-        }).bind(this));
+    //界面添加启动页
+    componentDidMount() {
+        // do anything while splash screen keeps, use await to wait for an async task.
+        setTimeout(()=>{
+            SplashScreen.hide()
+        },3000)
     }
     render(){
-        const {store} = this.state
-        if(!store) {
-            return null
-        }
-        return <Provider store={store}>
-            <App />
-        </Provider>
+        return (
+            <View style={{flex:1,...flexCenter}}>
+
+                <Text>人生如戏，戏如人生</Text>
+                <PButton>也许这就是生活</PButton>
+            </View>
+        );
     }
 }
 
