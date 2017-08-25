@@ -25,7 +25,7 @@ class _App extends Component{
     render() {
         return (
             <View style={{flex:1,...flexCenter}}>
-                <Text>人生如戏，戏如人生</Text>
+                <Text style={{flex:1}}>人生如戏，戏如人生</Text>
                 <PButton>也许这就是生活</PButton>
             </View>
         );
