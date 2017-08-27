@@ -18,7 +18,8 @@ import TabNavigator from "react-native-tab-navigator"
 
 import {flexCenter} from './base/style'
 
-import {AccountPage} from './page/AccountPage'
+// import {AccountPage} from './page/AccountPage'
+import {AccountpageScrollview} from './page/AccountpageScrollview'
 import {AccountPageViewpager} from './page/AccountPageViewpager'
 //var AccountPageViewpager = require('./page/AccountPageViewpager')
 
@@ -70,7 +71,7 @@ export class Entry extends Component {
             <View style={{flex: 1}}>
                 <TabNavigator hidesTabTouch={true} tabBarStyle={styles.tab}>
                     {this._renderTabItem(ACCOUNT_NORMAL, ACCOUNT_FOCUS, ACCOUNT,ACCOUNT_TITLE,<AccountPageViewpager/>)}
-                    {this._renderTabItem(HOME_NORMAL, HOME_FOCUS, HOME, HOME_TITLE,Entry._createChildView(HOME))}
+                    {this._renderTabItem(HOME_NORMAL, HOME_FOCUS, HOME, HOME_TITLE,<AccountpageScrollview></AccountpageScrollview>)}
                 </TabNavigator>
             </View >
         );
