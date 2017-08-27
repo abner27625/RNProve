@@ -46,13 +46,14 @@ export class AccountpageScrollview extends Component{
         },2000)
     }
     render(){
-indicator        const indicatorWidth = circleSize * bannerviewCount + circleMargin * bannerviewCount * 2; //计算指示器的宽度
+        const bannerviewCount = this.state.bannerview.length;  //指示器的圆点个数
+        const indicatorWidth = circleSize * bannerviewCount + circleMargin * bannerviewCount * 2; //计算指示器的宽度
         const left = (Dimensions.get('window').width - indicatorWidth)/2; //计算指示器最左边的坐标位置
         return(
             <View style={styles.bannerview}>
                 <ScrollView ref="scrollview"
                     horizontal={true}
-                    //如果设置成true的话，这个将变成横条的
+                    //如果设置成true的话，这个将变成横条的indicator
                     showsHorizontalScrollIndicator={false}
                     pagingEnabled={true}>
                     {this.state.bannerview.map((bannerview,index)=>{
