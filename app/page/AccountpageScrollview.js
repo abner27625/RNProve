@@ -43,8 +43,26 @@ export class AccountpageScrollview extends Component{
             this.setState({currentPage:nextpage});
             const offSetX = nextpage * Dimensions.get('window').width;
             this.refs.scrollview.scrollResponderScrollTo({x:offSetX,y:0,animated:true})
-        },2000)
+        },3000)
     }
+    //手动滑动
+    _scrollEnd(){
+        //水平方向的偏移量
+        var offset = this.refs.scrollview.nativeEvent.contentOffset.x;
+        //当前页数
+        var currentPage = Math.floor(offset/Dimensions.get('window').width);
+        //更新的当前页数
+        this.setState({currentPage:currentPage});
+    }
+    //调用停止拖拽
+    _onScrollEndDrag(){
+        this._startTimer();
+    }
+    //调用开始拖拽
+    _onScrollBeginDrag(){
+        clearInterval(this.interval)
+    }
+
     render(){
         const bannerviewCount = this.state.bannerview.length;  //指示器的圆点个数
         const indicatorWidth = circleSize * bannerviewCount + circleMargin * bannerviewCount * 2; //计算指示器的宽度
@@ -53,9 +71,17 @@ export class AccountpageScrollview extends Component{
             <View style={styles.bannerview}>
                 <ScrollView ref="scrollview"
                     horizontal={true}
-                    //如果设置成true的话，这个将变成横条的indicator
+                    //如果设置成true的话，这个将变成横条的indicator，false为隐藏水平滚动条
                     showsHorizontalScrollIndicator={false}
-                    pagingEnabled={true}>
+                    //自动分页
+                    pagingEnabled={true}
+                    //设置手动滑动
+                    onMomentumScrollEnd={()=>this._scrollEnd()}
+                    //开始拖拽
+                    onScrollBeginDrag = {this._onScrollBeginDrag}
+                    //停止拖拽
+                    onScrollEndDrag = {this._onScrollEndDrag}
+                >
                     {this.state.bannerview.map((bannerview,index)=>{
                         return (
                             <TouchableHighlight key={index} onPress={() => Alert.alert('生活无限美好', '我会好好的', null)}>
