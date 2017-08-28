@@ -56,10 +56,12 @@ export class AccountpageScrollview extends Component{
     }
     //调用停止拖拽
     _onScrollEndDrag(){
+        //开启计时器
         this._startTimer();
     }
     //调用开始拖拽
     _onScrollBeginDrag(){
+        //停止计时器
         clearInterval(this.interval)
     }
 
