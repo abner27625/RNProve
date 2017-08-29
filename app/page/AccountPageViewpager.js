@@ -8,7 +8,8 @@ import {
     Image,
     StyleSheet,
     ScrollView,
-    RefreshControl
+    RefreshControl,
+    Dimensions
 } from 'react-native'
 /**
  * 踩了个大坑，多加了{}
@@ -16,6 +17,7 @@ import {
  * */
 import ViewPager from "react-native-viewpager"
 
+const deviceWidth =Dimensions.get('window').width;
 export class AccountPageViewpager extends Component{
 
     constructor(props) {
@@ -59,7 +61,7 @@ const BANNER_IMGS = [
 
 const styles = StyleSheet.create({
    page: {
-       flex: 1,
+       width:deviceWidth,
        height: 200,
        resizeMode: 'stretch'
    },
