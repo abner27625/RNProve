@@ -43,12 +43,15 @@ export class AccountPageViewpager extends Component{
     //存在一个优化问题，最后一张跳到第一张的时候界面会闪一下，类似重新刷新一次
     render(){
         return (
-            <ViewPager
-                style={{height:200}}
-                dataSource={this.state.dataSource}
-                renderPage={this._renderPage}
-                isLoop={true}
-                autoPlay={true}/>
+            <View style={{height: 200,paddingBottom:5,}}>
+                <ViewPager
+                    style={{height:200,width: deviceWidth}}
+                    dataSource={this.state.dataSource}
+                    renderPage={this._renderPage}
+                    isLoop={true}
+                    autoPlay={true}
+                    />
+            </View>
         )
     }
 }
@@ -63,6 +66,6 @@ const styles = StyleSheet.create({
    page: {
        width:deviceWidth,
        height: 200,
-       resizeMode: 'stretch'
+       //resizeMode: 'stretch'
    },
 });

@@ -18,11 +18,11 @@ import TabNavigator from "react-native-tab-navigator"
 
 import {flexCenter} from './base/style'
 
-// import {AccountPage} from './page/AccountPage'
+ import {AccountPage} from './page/AccountPage'
 import {AccountpageScrollview} from './page/AccountpageScrollview'
 import {AccountPageViewpager} from './page/AccountPageViewpager'
 //var AccountPageViewpager = require('./page/AccountPageViewpager')
-
+//import {Listview} from './page/Listview'
 export class Entry extends Component {
     constructor(props) {
         super(props);
