@@ -1,7 +1,7 @@
 /**
  * Created by Administrator on 2017/8/24.
  */
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import {
     AppRegistry,
     StyleSheet,
@@ -9,25 +9,22 @@ import {
     View,
     Dimensions
 } from 'react-native';
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
 
 import {SplashScreen} from "react-native-splash-screen"
 import {connect} from "react-redux"
+import {Entry} from './entry'
+import reducer from './reducer/index'
+const store = createStore(reducer);
 
-class _App extends Component{
-    constructor(){
-        super()
-        setTimeout( () => {
-            SplashScreen.hide()
-        }, 3000)
-        this.nextTimeExit = false
-    }
+class _App extends PureComponent{
 
     render() {
         return (
-            <View style={{flex:1,...flexCenter}}>
-                <Text style={{flex:1}}>人生如戏，戏如人生</Text>
-                <PButton>也许这就是生活</PButton>
-            </View>
+            <Provider store={store}>
+                <Entry></Entry>
+            </Provider>
         );
     }
 }

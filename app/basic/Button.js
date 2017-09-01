@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React, {PureComponent} from 'react'
 
 import {
   View,
@@ -11,7 +11,7 @@ import {
 
 import {flexCenter} from "./../base/style"
 
-export class Button extends Component{
+export class Button extends PureComponent{
 
   static propTypes = {
     backgroundColor : React.PropTypes.string

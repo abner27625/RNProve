@@ -1,8 +1,8 @@
 
-import React, {Component} from "react"  
+import React, {PureComponent} from "react"
 import {View, Dimensions} from 'react-native'
 
-export class TabbarItem extends Component{
+export class TabbarItem extends PureComponent{
   render(){
     const {children, name, active, switch_to} = this.props
     const style = {overflow : 'hidden'}

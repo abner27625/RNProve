@@ -1,7 +1,7 @@
 /**
  * Created by Administrator on 2017/8/25.
  */
-import React, {Component} from 'react'
+import React, {PureComponent} from 'react'
 import {
     View,
     Text,
@@ -11,7 +11,7 @@ import {
 } from 'react-native'
 import Swiper from 'react-native-swiper'
 
-export class AccountPage extends Component{
+export class AccountPage extends PureComponent{
     renderImg(){
         //使用swiper存在一个问题，缺少unique key，url---->有道笔记
         var images = [url];

@@ -1,7 +1,7 @@
 /**
  * Created by Administrator on 2017/8/25.
  */
-import React, {Component} from 'react'
+import React, {PureComponent} from 'react'
 import {
     View,
     Text,
@@ -18,8 +18,8 @@ import {
 import ViewPager from "react-native-viewpager"
 
 const deviceWidth =Dimensions.get('window').width;
-export class AccountPageViewpager extends Component{
 
+export class AccountPageViewpager extends PureComponent{
     constructor(props) {
         super(props);
         // 用于构建DataSource对象
@@ -27,17 +27,13 @@ export class AccountPageViewpager extends Component{
             pageHasChanged: (p1, p2) => p1 !== p2,
         });
         // 实际的DataSources存放在state中
-        this.state = {
-            dataSource: dataSource.cloneWithPages(BANNER_IMGS)
-        }
+        this.state = {dataSource: dataSource.cloneWithPages(BANNER_IMGS)}
         console.log(dataSource)
     }
 
     _renderPage(data, pageID) {
         return (
-            <Image
-                source={data}
-                style={styles.page}/>
+            <Image source={data} style={styles.page}/>
         );
     }
     //存在一个优化问题，最后一张跳到第一张的时候界面会闪一下，类似重新刷新一次

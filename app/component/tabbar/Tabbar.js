@@ -1,5 +1,5 @@
 
-import React, {Component} from 'react'
+import React, {PureComponent} from 'react'
 import {
   View,
   Text,
@@ -12,7 +12,7 @@ import {flexCenter} from '../../base/style'
 
 import {connect} from 'react-redux'
 
-class _Tabbar extends Component {
+class _Tabbar extends PureComponent {
   
   constructor(props){
     super()

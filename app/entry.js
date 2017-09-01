@@ -21,8 +21,9 @@ import {flexCenter} from './base/style'
  import {AccountPage} from './page/AccountPage'
 import {AccountpageScrollview} from './page/AccountpageScrollview'
 import {AccountPageViewpager} from './page/AccountPageViewpager'
-//var AccountPageViewpager = require('./page/AccountPageViewpager')
-//import {Listview} from './page/Listview'
+import {Flatlist} from "./page/Flatlist";
+
+import {BaseFlatlist} from "./component/BaseFlatlist"
 export class Entry extends Component {
     constructor(props) {
         super(props);
@@ -70,7 +71,7 @@ export class Entry extends Component {
         return (
             <View style={{flex: 1}}>
                 <TabNavigator hidesTabTouch={true} tabBarStyle={styles.tab}>
-                    {this._renderTabItem(ACCOUNT_NORMAL, ACCOUNT_FOCUS, ACCOUNT,ACCOUNT_TITLE,<AccountPageViewpager/>)}
+                    {this._renderTabItem(ACCOUNT_NORMAL, ACCOUNT_FOCUS, ACCOUNT,ACCOUNT_TITLE,<BaseFlatlist/>)}
                     {this._renderTabItem(HOME_NORMAL, HOME_FOCUS, HOME, HOME_TITLE,<AccountpageScrollview></AccountpageScrollview>)}
                 </TabNavigator>
             </View >

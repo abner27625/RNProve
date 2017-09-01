@@ -1,7 +1,7 @@
 /**
  * Created by lenovo on 2017/8/27.
  */
-import React, {Component} from 'react'
+import React, {PureComponent} from 'react'
 import {
     View,
     Text,
@@ -12,7 +12,7 @@ import {
     StyleSheet,
 } from 'react-native'
 
-export class HomeItem extends Component{
+export class HomeItem extends PureComponent{
     constructor(props){
         super(props)
         this.state = {

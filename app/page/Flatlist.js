@@ -1,84 +1,87 @@
 /**
  * Created by lenovo on 2017/8/28.
  */
-import React, {Component} from 'react'
+import React, {PureComponent} from 'react'
 import {
     View,
     Text,
     Image,
     TouchableOpacity,
     Dimensions,
-    ListView,
+    FlatList,
     StyleSheet,
-    Alert
+    Alert,
 } from 'react-native'
 
-const ds = new ListView().DataSource({
-    rowHasChanged:(r1,r2) => r1 !== r2
-})
-
-export class Listview extends Component {
+export class Flatlist extends PureComponent {
     constructor() {
         super();
         this.state = {
-            dataSource: ds.cloneWithRows([
+            dataSource: [
                 {
+                    key:1,
                     image:require('../../img/home_toolbar_jie_hover.png'),
                     title:'商品1',
                     subTitle:'描述1'
                 },
                 {
+                    key:2,
                     image:require('../../img/home_toolbar_jie_hover.png'),
                     title:'商品1',
                     subTitle:'描述1'
                 },
                 {
+                    key:3,
                     image:require('../../img/home_toolbar_jie_hover.png'),
                     title:'商品1',
                     subTitle:'描述1'
                 },
                 {
+                    key:4,
                     image:require('../../img/home_toolbar_jie_hover.png'),
                     title:'商品1',
                     subTitle:'描述1'
                 },
                 {
+                    key:5,
                     image:require('../../img/home_toolbar_jie_hover.png'),
                     title:'商品1',
                     subTitle:'描述1'
                 },
                 {
+                    key:6,
                     image:require('../../img/home_toolbar_jie_hover.png'),
                     title:'商品1',
                     subTitle:'描述1'
                 },
-            ])
+            ]
         }
     }
-    _renderRow = (rowData,sectionId,rowId)=>{
+    _keyExtractor = (item, index) => item.key;
+    _renderRow = ({item})=>{
         return(
             <TouchableOpacity onPress={()=>Alert.alert('生活无限美好',null,null)}>
                 <View style={styles.row}>
-                    <Image source={rowData.image} style={styles.productsImage}></Image>
+                    <Image source={item.image} style={styles.productsImage}></Image>
                     <View style={styles.productText}>
-                        <Text style={styles.productTitle}>{rowData.title}</Text>
-                        <Text style={styles.productSubTitle}>{rowData.subTitle}</Text>
+                        <Text style={styles.productTitle}>{item.title}</Text>
+                        <Text style={styles.productSubTitle}>{item.subTitle}</Text>
                     </View>
                 </View>
             </TouchableOpacity>
         )
     }
-    _renderSeperator(sectionId,rowId,adjacentRowHighlighted){
+    _renderSeperator(){
         return (
-            <View key={`${sectionId}-${rowId}`} style={styles.divider}>
-            </View>
+            <View style={styles.divider}></View>
         )
     }
     render() {
         return (
             <View style={styles.products}>
-                <ListView  dataSource={this.state.dataSource} renderRow={this._renderRow} initialListSize={6}
-                    renderSeparator={this._renderSeperator()}/>
+                <FlatList  data={this.state.dataSource} renderItem={this._renderRow}
+                           keyExtractor={this._keyExtractor}
+                           ItemSeparatorComponent={this._renderSeperator}/>
             </View>
         )
     }
@@ -88,7 +91,7 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     row:{
-        height:50,
+        height:100,
         flexDirection:'row',
         // justifyContent:"center",
         // alignContent:'center'
@@ -117,8 +120,8 @@ const styles = StyleSheet.create({
     },
     divider:{
         height:1,
-        width:Dimensions.get('window').width-5,
-        marginLeft:5,
-        backgroundColor:'lightgray'
+        width:Dimensions.get('window').width - 5,
+        marginLeft:10,
+        backgroundColor:'#008dfe'
     }
 });

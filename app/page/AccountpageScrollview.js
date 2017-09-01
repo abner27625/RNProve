@@ -1,7 +1,7 @@
 /**
  * Created by lenovo on 2017/8/26.
  */
-import React, {Component} from 'react'
+import React, {PureComponent} from 'react'
 import {
     View,
     Text,
@@ -14,7 +14,7 @@ import {
     Alert
 } from 'react-native'
 
-export class AccountpageScrollview extends Component{
+export class AccountpageScrollview extends PureComponent{
     constructor(props){
         super(props);
         this.state={
