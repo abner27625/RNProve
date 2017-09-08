@@ -1,7 +1,6 @@
 /**
- * Created by Administrator on 2017/8/24.
+ * Created by Administrator on 2017/9/6.
  */
-
 import React, { Component } from 'react';
 import {
     AppRegistry,
@@ -13,18 +12,11 @@ import {
 } from 'react-native';
 
 import SplashScreen from "react-native-splash-screen"
-import {PButton} from "./component/PButton"
 import TabNavigator from "react-native-tab-navigator"
 
-import {flexCenter} from './base/style'
 
- // import {AccountPage} from './page/AccountPage'
 import {AccountpageScrollview} from './page/AccountpageScrollview'
-// import {AccountPageViewpager} from './page/AccountPageViewpager'
-// import {Flatlist} from "./page/Flatlist";
-import HomeGrid from "./page/HomeGrid"
-import RepayList from './page/RepayList'
-// import Repay from './page/Repay'
+
 import {BaseFlatlist} from "./component/BaseFlatlist"
 export class Entry extends Component {
     constructor(props) {
@@ -38,16 +30,6 @@ export class Entry extends Component {
             SplashScreen.hide()
         },3000)
     }
-    //此渲染仅为测试
-    /*render(){
-        return (
-            <View style={{flex:1,...flexCenter}}>
-
-                <Text>人生如戏，戏如人生</Text>
-                <PButton>也许这就是生活</PButton>
-            </View>
-        );
-    }*/
     _renderTabItem(img, selectedImg, tag,title, childView) {
         return (
             <TabNavigator.Item
@@ -70,13 +52,24 @@ export class Entry extends Component {
         )
     }
     render() {
-        return (
-            <View style={{flex: 1}}>
+        return
+            {/*<View style={{flex: 1}}>
                 <TabNavigator hidesTabTouch={true} tabBarStyle={styles.tab}>
                     {this._renderTabItem(ACCOUNT_NORMAL, ACCOUNT_FOCUS, ACCOUNT,ACCOUNT_TITLE,<BaseFlatlist/>)}
-                    {this._renderTabItem(HOME_NORMAL, HOME_FOCUS, HOME, HOME_TITLE,<RepayList></RepayList>)}
+                    {this._renderTabItem(HOME_NORMAL, HOME_FOCUS, HOME, HOME_TITLE,<AccountpageScrollview></AccountpageScrollview>)}
                 </TabNavigator>
-            </View >
+            </View >*/}
+        (<Navigator
+                initialRoute={ROUTE_STACK[routeIndex]}
+                renderScene={this.renderScene}
+                navigationBar={
+                    this.TabBar()
+                }
+                initialRouteStack={ROUTE_STACK}
+                ref={(navigator) => {
+                    this._navigator = navigator;
+                }}
+            />
         );
     }
 }

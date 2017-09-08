@@ -9,7 +9,8 @@ import {
   AppRegistry,
   View
 } from 'react-native';
-import {Entry} from './app/entry'
+// import {Entry} from './app/entry'
+import App from './src/App'
 
-AppRegistry.registerComponent('RNProve', () => Entry);
+AppRegistry.registerComponent('RNProve', () => App);
 

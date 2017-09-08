@@ -2,21 +2,12 @@
  * Created by lenovo on 2017/8/28.
  */
 import React, {PureComponent} from 'react'
-import {
-    View,
-    Text,
-    Image,
-    TouchableOpacity,
-    Dimensions,
-    FlatList,
-    StyleSheet,
-    Alert,
-} from 'react-native'
+import {View, Text, Image, TouchableOpacity, Dimensions, FlatList, StyleSheet, Alert,} from 'react-native'
 
 import {BaseItemList} from '../basic/BaseItemList'
 import SpacingView from '../base/SpacingView'
 
-export class BaseFlatlist extends PureComponent {
+export default class HomeFlatlist extends PureComponent {
     constructor() {
         super();
         this.state = {
