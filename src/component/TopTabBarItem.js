@@ -7,6 +7,10 @@ export default class TabBarItem extends PureComponent {
         return (
             <Image
                 source={require('../../img/home_banner_enjoy.png')}
+
+
+
+
             />
         );
     }
